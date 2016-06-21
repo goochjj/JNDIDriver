@@ -96,8 +96,8 @@
 				<attribute name="Bundle-SymbolicName"		value="${app.name}" />
 				<attribute name="Bundle-ManifestVersion"	value="2" />
 				<attribute name="Bundle-Version"		value="${app.fullVersion}" />
-
-		   </manifest>
+				<attribute name="Project-Home"			value="https://github.com/goochjj/JNDIDriver" />	
+			</manifest>
 		</jar>
 		<copy tofile="${dist.dir}/${app.name}-${app.fullVersion}.jar"  file="${dist.dir}/${app.name}.jar"/>
 	</target>
