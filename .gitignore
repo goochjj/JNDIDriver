@@ -20,7 +20,7 @@ Thumbs.db
 
 db.properties
 
-/dist/build
+/build
 /dist/*.bak
 /dist/Thumbs.db
 /dist/*~
@@ -28,4 +28,4 @@ db.properties
 /dist/*.xml
 /dist/*.gz
 /deps
-
+/**/1/**
