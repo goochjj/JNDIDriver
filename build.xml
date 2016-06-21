@@ -60,7 +60,7 @@
 		<echo message="Code version ${app.fullVersion}" />
 	</target>
 
-	<target name="dist" depends="lucee-extension" />
+	<target name="dist" depends="tests" />
 		
 	<target name="prepare" description="Prepares the build target." depends="version,resolve">
 		<tstamp>
