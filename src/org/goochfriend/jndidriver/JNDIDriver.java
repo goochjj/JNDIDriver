@@ -2,6 +2,7 @@ package org.goochfriend.jndidriver;
 
 import java.sql.Connection;
 import java.sql.Driver;
+import java.sql.DriverManager;
 import java.sql.DriverPropertyInfo;
 import java.sql.SQLException;
 import java.sql.SQLFeatureNotSupportedException;
@@ -13,6 +14,14 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class JNDIDriver implements Driver {
+    static {
+        try {
+            // Register this with the DriverManager
+            DriverManager.registerDriver(new JNDIDriver());
+        } catch (SQLException e) {
+        }
+    }
+
 	public Connection connect(String url, Properties info) throws SQLException {
 		InitialContext ctx = null;
 		try {

@@ -10,7 +10,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import org.apache.naming.java.javaURLContextFactory;
-import org.goochfriend.jndidriver.JNDIDriver;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -71,26 +70,18 @@ public class JNDIDriverTest {
 		ctx.bind("java:/comp/env/jdbc/testNoLogin", ds);
 	}	
 	@Test
-	public void testDriverRegistration() throws Exception {
-		DriverManager.registerDriver(new JNDIDriver());
-		assertNotNull(DriverManager.getDriver("java:jndi:TestURL"));
-	}
-	
-	@Test
 	public void testSPIDriverRegistration() throws Exception {
 		assertNotNull(DriverManager.getDriver("java:jndi:TestURL"));
 	}
 
 	@Test
 	public void testJNDIDS() throws Exception {
-		DriverManager.registerDriver(new JNDIDriver());
 		Connection con = DriverManager.getConnection("java:jndi:java:/comp/env/jdbc/test");
 		assertNotNull(con);
 	}
 
 	@Test
 	public void testJNDIDSWithLogin() throws Exception {
-		DriverManager.registerDriver(new JNDIDriver());
 		//DriverManager.setLogWriter(new java.io.PrintWriter(System.err));
 		Connection con = DriverManager.getConnection("java:jndi:java:/comp/env/jdbc/testNoLogin", "mrwizard", "hln02sound!");
 		assertNotNull(con);
