@@ -1,0 +1,28 @@
+<ivy-module version="2.0">
+	<info organisation="com.k12systems" module="Lucee" />
+	<configurations>
+		<conf name="default" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime,master-signed"/>
+		<conf name="default-unsigned" visibility="public" description="runtime dependencies and master artifact can be used with this conf" extends="runtime,master-unsigned"/>
+		<conf name="master" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies"/>
+		<conf name="master-signed" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies" extends="master"/>
+		<conf name="master-unsigned" visibility="public" description="contains only the artifact published by this module itself, with no transitive dependencies" extends="master"/>
+		<conf name="compile" visibility="public" description="this is the default scope, used if none is specified. Compile dependencies are available in all classpaths." extends="runtime" />
+		<conf name="provided" visibility="public" description="this is much like compile, but indicates you expect the JDK or a container to provide it. It is only available on the compilation classpath, and is not transitive."/>
+		<conf name="runtime" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath."/>
+		<conf name="runtime-signed" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="runtime"/>
+		<conf name="runtime-unsigned" visibility="public" description="this scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath." extends="runtime"/>
+		<conf name="test" visibility="private" description="this scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases." extends="runtime,compile"/>
+		<conf name="system" visibility="public" description="this scope is similar to provided except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository."/>
+		<conf name="sources" visibility="public" description="this configuration contains the source artifact of this module, if any."/>
+		<conf name="javadoc" visibility="public" description="this configuration contains the javadoc artifact of this module, if any."/>
+		<conf name="optional" visibility="public" description="contains all optional dependencies"/>
+		
+		<conf name="eclipse" description="Eclipse requirements only" visibility="private" />
+	</configurations>
+	<publications />
+	<dependencies>
+		<dependency org="net.sourceforge.jtds" name="jtds" rev="1.2.5" conf="test->runtime(*),master(*)" />
+		<dependency org="org.apache.tomcat" name="tomcat-catalina" rev="7.0.12" conf="test->runtime(*),master(*)"/>
+
+	</dependencies>
+</ivy-module>
