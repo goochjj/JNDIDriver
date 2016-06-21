@@ -24,13 +24,19 @@ public class JNDIDriver implements Driver {
 			String find = url;
 			if (find.startsWith("java:jndi:")) find=find.substring(10);
 			Object o = ctx.lookup(find);
-			if (o instanceof DataSource) {
-				return ((DataSource)o).getConnection();
-			}
 			if (o instanceof java.sql.Connection) {
 				return (java.sql.Connection)o;
 			}
-			throw new SQLException("Object returned of class "+o.getClass().getName()+" could not be handled");
+			if (o instanceof DataSource) {
+				String user = info.getProperty("user");
+				String pw = info.getProperty("password");
+				if (user!=null || pw!=null) {
+					return ((DataSource)o).getConnection(user, pw);
+				} else {
+					return ((DataSource)o).getConnection();
+				}
+			}
+			throw new SQLException("Object returned of class "+o.getClass().getName()+" could not be handled - need DataSource");
 		} catch (NamingException e) {
 			throw new SQLException("JNDI Naming Exception", e);
 		} finally {
