@@ -18,6 +18,8 @@ Thumbs.db
 /includes
 /output
 
+db.properties
+
 /dist/build
 /dist/*.bak
 /dist/Thumbs.db
