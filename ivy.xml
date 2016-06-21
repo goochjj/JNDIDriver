@@ -21,8 +21,8 @@
 	</configurations>
 	<publications />
 	<dependencies>
-		<dependency org="net.sourceforge.jtds" name="jtds" rev="1.2.5" conf="test->runtime(*),master(*)" />
+		<dependency org="net.sourceforge.jtds" name="jtds" rev="1.2.4" conf="test->runtime(*),master(*)" />
 		<dependency org="org.apache.tomcat" name="tomcat-catalina" rev="7.0.12" conf="test->runtime(*),master(*)"/>
-
+		<dependency org="junit" name="junit" rev="4.+" conf="compile->compile(*),master(*)" />
 	</dependencies>
 </ivy-module>
